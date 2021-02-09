@@ -9,7 +9,7 @@
                 {
                     "name":"test1",
                     "input":"01101",
-                    "expected-output":true,
+                    "expected-output":false,
                     "points":1
                 },
                 {
