@@ -11,6 +11,8 @@ jobs:
         steps:
           - uses: actions/checkout@v2
           - name: build
+            run: sh build.sh
+          - name: test
             run: sh testAll.sh
 #          - uses: education/autograding@v1
 #          - uses : hikmatfarhat-ndu/my_autograding@main
