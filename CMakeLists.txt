@@ -16,5 +16,5 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 find_package(Boost 1.72.0) 
 
 add_executable(FaChecker FaChecker.cpp readFA.cpp utils.cpp)
-#target_include_directories(FaChecker PUBLIC "${PROJECT_SOURCE_DIR}")
+target_include_directories(FaChecker PUBLIC "${PROJECT_SOURCE_DIR}")
 include_directories(${Boost_INCLUDE_DIRS}) 
