@@ -1,0 +1,12 @@
+{
+    "nodes":[
+        {"x":132,"y":148,"text":"p_0","isAcceptState":false},
+        {"x":318,"y":148,"text":"p_1","isAcceptState":true}],
+        "links":[
+            {"type":"StartLink","node":0,"text":"","deltaX":-60,"deltaY":0},
+            {"type":"SelfLink","node":0,"text":"1","anchorAngle":-2.0344439357957027},
+            {"type":"Link","nodeA":0,"nodeB":1,"text":"0","lineAngleAdjust":3.141592653589793,"parallelPart":0.41397849462365593,"perpendicularPart":-44},
+            {"type":"Link","nodeA":1,"nodeB":0,"text":"0","lineAngleAdjust":3.141592653589793,"parallelPart":0.532258064516129,"perpendicularPart":-30},
+            {"type":"SelfLink","node":1,"text":"1","anchorAngle":-0.49642275340488184}
+        ]
+}
