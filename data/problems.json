@@ -8,7 +8,7 @@
                 {
                     "name":"test1",
                     "input":"01101",
-                    "expected-output":true,
+                    "expected-output":false,
                     "points":1
                 },
                 {
@@ -57,14 +57,14 @@
                 {
                     "name":"test9",
                     "input":"1",
-                    "expected-output":true,
+                    "expected-output":false,
                     "points":1
                 }
                 ,
                 {
                     "name":"test10",
                     "input":"",
-                    "expected-output":true,
+                    "expected-output":false,
                     "points":1
                 }
              ]
@@ -77,56 +77,56 @@
                     {
                         "name":"test1",
                         "input":"01101",
-                        "expected-output":true,
+                        "expected-output":false,
                         "points":1
                     },
                     {
                         "name":"test3",
                         "input":"100101",
-                        "expected-output":false,
+                        "expected-output":true,
                         "points":1
                     },
                     {
                         "name":"test4",
                         "input":"01101",
-                        "expected-output":true,
+                        "expected-output":false,
                         "points":1
                     },
                     {
                         "name":"test5",
                         "input":"100101",
-                        "expected-output":false,
+                        "expected-output":true,
                         "points":1
                     },
                     {
                         "name":"test6",
                         "input":"01101",
-                        "expected-output":true,
+                        "expected-output":false,
                         "points":1
                     },
                     {
                         "name":"test7",
                         "input":"100101",
-                        "expected-output":false,
+                        "expected-output":true,
                         "points":1
                     },
                     {
                         "name":"test8",
                         "input":"01101",
-                        "expected-output":true,
+                        "expected-output":false,
                         "points":1
                     },
                     {
                         "name":"test9",
                         "input":"100101",
-                        "expected-output":false,
+                        "expected-output":true,
                         "points":1
                     }
                     ,
                     {
                         "name":"test10",
                         "input":"100101",
-                        "expected-output":false,
+                        "expected-output": true,
                         "points":1
                     }
                  ]
