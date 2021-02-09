@@ -120,6 +120,7 @@ int main(int argc,char **argv) {
 		dump(tree);
 		std::cout << tree["total"];
 		if(tree["total"]!=tree["max_points"]){
+			std::cerr<<"total="<<tree["total"]<<"   max="<<tree["max_points"]<<"\n";
 		    std::cerr<<"some tests failed\n";
 		    exit(1);
 		}
