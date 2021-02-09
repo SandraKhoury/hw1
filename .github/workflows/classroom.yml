@@ -15,4 +15,4 @@ jobs:
           - name: test
             run: sh testAll.sh
 #          - uses: education/autograding@v1
-#          - uses : hikmatfarhat-ndu/my_autograding@main
+          - uses : hikmatfarhat-ndu/my_autograding@main
