@@ -1,3 +1,3 @@
 #!/bin/bash
 cd build
-./FaChecker ../problems.json
+./FaChecker ../data/problems.json
