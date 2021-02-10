@@ -331,7 +331,7 @@
     {
         "name" : "problem10",
         "description": "Odd number of zeros",
-        "NFA-specs":"fsa2.json",
+        "NFA-specs":"10.json",
         "tests":[
                     {
                         "name":"test1",

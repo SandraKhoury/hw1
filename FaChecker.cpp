@@ -155,9 +155,10 @@ int main(int argc,char **argv) {
 	*/
 		//std::cout<<report(tree);
 	}
-	catch (std::exception& e) {
-		std::cerr << "ERROR\n";
-		std::cerr << e.what() << "\n";
+	catch (...) {
+		std::cerr << fail("ERROR\n");
+		std::cerr << fail("File(s) not found or corrupted\n");
+		//std::cerr << e.what() << "\n";
 	}
 	return 0;
 }

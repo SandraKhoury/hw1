@@ -35,13 +35,21 @@ FA parse_fa (std::string filename) {
 	std::string input;
 	if(file.is_open()){
 		input=std::string(std::istreambuf_iterator<char>{file}, {});
-	file.close();
+		file.close();
 	}
+	
 	else{
 		std::cerr<<"cannot open file "<<filename <<"\n";
 		exit(1);
 	}
-	auto fsa = json::parse(input);
+	json fsa;
+	try {
+		fsa = json::parse(input);
+	}
+	catch (std::exception& e) {
+		throw invalid_spec("could not read " + filename + " probably empty");
+
+	}
 	auto nodes = fsa["nodes"];
 	auto links = fsa["links"];
 	int i = 0;
