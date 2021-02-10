@@ -6,7 +6,7 @@ SET(CMAKE_BUILD_TYPE "Release")
 #after cmake ..
 #cmake --build . --config Release 
 message(STATUS "SYstem is ${CMAKE_SYSTEM_NAME}")
-IF(DEFINED $ENV{"GITHUB_WORKSPACE"})
+IF(DEFINED $ENV{GITHUB_WORKSPACE})
     SET(MYVAR "$ENV{BOOST_ROOT_1_72_0}")
     SET(Boost_INCLUDE_DIR "${MYVAR}/include")
     message(STATUS "Boost=${Boost_INCLUDE_DIR}END")
