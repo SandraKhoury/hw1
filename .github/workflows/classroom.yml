@@ -14,7 +14,9 @@ jobs:
           - uses: actions/checkout@v2
           - name: build
             run: sh build.sh
-#          - name: test
-#            run: sh testAll.sh
-#          - uses: education/autograding@v1
           - uses : hikmatfarhat-ndu/my_autograding@main
+          - uses: EndBug/add-and-commit@v5
+            with:
+               add: "*"
+            env: 
+                GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}  
