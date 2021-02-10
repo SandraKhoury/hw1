@@ -1,6 +1,6 @@
 # Homework 2
 
-Use this repository to submit your solution to homework 1. The questions are on Teams in a pdf file
+Use this repository to submit your solution to homework 1. The questions are on Teams in a pdf file.
 
 ## Instructions 
 1. Download fsm.zip on your computer and unpack it. Open fsa.html with your browser.
