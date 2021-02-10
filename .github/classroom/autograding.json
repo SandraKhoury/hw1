@@ -8,6 +8,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
+      "partial": true,
       "points": 100
     }
   ]
