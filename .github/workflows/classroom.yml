@@ -8,6 +8,8 @@ jobs:
       build:
         name: Autograding
         runs-on: ubuntu-latest
+        strategy:
+              max-parallel: 1
         steps:
           - uses: actions/checkout@v2
           - name: build
