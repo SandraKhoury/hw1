@@ -54,7 +54,7 @@ int dump(const json& tree) {
 				std::cerr << success(" PASSED") << "\tPoints=" << t["points"] << "\n";
 			}
 		}
-		std::cerr << message("SUBTOTAL=   ")<<p["total"]<<"/"<<p["max points"]<<"\n\n";
+		std::cerr << message("SUBTOTAL=   ")<<p["total"]<<"/"<<p["max_points"]<<"\n\n";
 
 	}
 	return total;
@@ -62,8 +62,16 @@ int dump(const json& tree) {
 void runTests(json& p,std::string parent_path) {
 	if(debug)std::cerr<<"Processing problem "<<p["name"]<<"\n";
 	auto filename = parent_path + "/" + static_cast<std::string>(p["NFA-specs"]);
-	FA nfa=parse_fa(filename);
-
+	FA nfa;
+	try {
+		nfa = parse_fa(filename);
+	}
+	catch (...) {
+		std::cerr << "Could not read " << filename << "\n";
+		for (auto& t : p["tests"])
+			t["points"] = 0;
+		return;
+	}
 	json& tests = p["tests"];
 	bool flip = false;
 	int total = 0;
@@ -83,13 +91,12 @@ void runTests(json& p,std::string parent_path) {
 	
 	}
 	p["total"] = total;
-	p["max points"] = possible;
+	p["max_points"] = possible;
 
 }
 
 
 json  runProblems(std::string filename) {
-	int total = 0;
 	auto dir = [=]() {
 		auto pos=filename.find_last_of("\\/");
 		return (std::string::npos == pos) ? "" : filename.substr(0, pos);
@@ -112,17 +119,27 @@ json  runProblems(std::string filename) {
 	json tree = json::parse(input);
 	json& problems = tree["problems"];
 	int max_possible=0;
+	int total = 0;
+
 /* first scan and compute max possible points
  * before they change
  */
+	int p_max_point = 0;
 	for(auto& p:problems){
 		for(auto t:p["tests"]){
 			max_possible+=static_cast<int>(t["points"]);
+			p_max_point += static_cast<int>(t["points"]);
 		}
+		p["max_points"] = p_max_point;
+		p_max_point = 0;
 	}
 	for (auto& p : problems) {
+		/* make sure the entry p["total"]
+		* exists in case test fails
+		*/
+		p["total"] = 0;
 		runTests(p,dir);
-		total += static_cast<int>(p["total"])	;
+		total += static_cast<int>(p["total"]);
 	}
 	tree["total"] = total;
 	tree["max_points"]=max_possible;
