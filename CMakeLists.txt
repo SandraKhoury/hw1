@@ -1,3 +1,6 @@
+
+# see this link https://stackoverflow.com/a/52925870/13505760
+# on how to run this project from VS
 cmake_minimum_required(VERSION 3.10.0)
 project (FA-Checker LANGUAGES CXX)
 set(CMAKE_SUPPRESS_REGENERATION true)
@@ -13,10 +16,7 @@ IF(DEFINED ENV{GITHUB_WORKSPACE})
     message(STATUS "Boost=${Boost_INCLUDE_DIR}END")
 ELSE()
     IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    #SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "C:/Boost/boost_1_74_0/boost_1_74_0/")
     SET(Boost_INCLUDE_DIR "C:/Boost/boost_1_74_0/boost_1_74_0")
-    # for linux pass the path to Boost 
-    # on the command line -DBoost_INCLUDE_DIR=path
     ELSE()
     SET(Boost_INCLUDE_DIR "/mnt/c/Boost/boost_1_74_0/boost_1_74_0/")
     ENDIF()

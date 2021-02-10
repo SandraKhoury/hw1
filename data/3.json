@@ -1,0 +1,21 @@
+{
+    "nodes":[
+        {"isAcceptState":false,"text":"s"},
+        {"isAcceptState":false,"text":"q_0"},
+        {"isAcceptState":false,"text":"q_01"},
+        {"isAcceptState":false,"text":"q_011"},
+        {"isAcceptState":true,"text":"q_0110"}
+    ],
+    "links":[
+        {"type":"StartLink","node":0,"text":""},
+        {"type":"SelfLink","node":0,"text":"1"},
+        {"type":"SelfLink","node":2,"text":"0"},
+        {"type":"SelfLink","node":4,"text":"0,1"},
+        {"type":"Link","nodeA":0,"nodeB":1,"text":"0"},
+        {"type":"Link","nodeA":1,"nodeB":2,"text":"1"},
+        {"type":"Link","nodeA":2,"nodeB":3,"text":"1"},
+        {"type":"Link","nodeA":3,"nodeB":4,"text":"0"},
+        {"type":"Link","nodeA":3,"nodeB":0,"text":"1"},
+        {"type":"Link","nodeA":2,"nodeB":1,"text":"0"}
+        ]
+}

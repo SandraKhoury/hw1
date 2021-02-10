@@ -6,7 +6,7 @@
 #include "FA.h"
 #include "utils.h"
 using nlohmann::json;
-
+bool debug=false;
 std::string report(const json& tree) {
 	std::ostringstream STREAM;
 	json problems = tree["problems"];
@@ -59,14 +59,16 @@ int dump(const json& tree) {
 	}
 	return total;
 }
-void runTests(json& p) {
-	
-	FA nfa=parse_fa(p["NFA-specs"]);
+void runTests(json& p,std::string parent_path) {
+	if(debug)std::cerr<<"Processing problem "<<p["name"]<<"\n";
+	auto filename = parent_path + "/" + static_cast<std::string>(p["NFA-specs"]);
+	FA nfa=parse_fa(filename);
 
 	json& tests = p["tests"];
 	bool flip = false;
 	int total = 0;
 	int possible = 0;
+	
 	for (auto& t : tests) {
 		possible += static_cast<int> (t["points"]);
 		bool r = nfa.accept(t["input"]);
@@ -88,6 +90,13 @@ void runTests(json& p) {
 
 json  runProblems(std::string filename) {
 	int total = 0;
+	auto dir = [=]() {
+		auto pos=filename.find_last_of("\\/");
+		return (std::string::npos == pos) ? "" : filename.substr(0, pos);
+	}();
+	if (debug) {
+		std::cerr << "parent path= " << dir << "\n";
+	}
 	std::ifstream file;
 	file.open(filename);
 	std::string input;
@@ -99,14 +108,24 @@ json  runProblems(std::string filename) {
 		std::cerr<<"cannot open file "<<filename<<"\n";
 		exit(1);
 	}
+	if(debug)std::cerr<<"Processing problems\n";
 	json tree = json::parse(input);
 	json& problems = tree["problems"];
-
+	int max_possible=0;
+/* first scan and compute max possible points
+ * before they change
+ */
+	for(auto& p:problems){
+		for(auto t:p["tests"]){
+			max_possible+=static_cast<int>(t["points"]);
+		}
+	}
 	for (auto& p : problems) {
-		runTests(p);
+		runTests(p,dir);
 		total += static_cast<int>(p["total"])	;
 	}
 	tree["total"] = total;
+	tree["max_points"]=max_possible;
 	return tree;
 	
 }
@@ -115,8 +134,15 @@ int main(int argc,char **argv) {
 		std::cerr << "usage: FaChecker filename.json\n";
 		exit(1);
 	}
+	auto config_filename = argv[1];
+	if(argc>2){
+
+		debug=true;
+		config_filename = "../data/problems.json";
+	}
+	std::cerr<<"START \n";
 	try {
-		json tree = runProblems(argv[1]);
+		json tree = runProblems(config_filename);
 		dump(tree);
 		std::cout << tree["total"];
 		if(tree["total"]!=tree["max_points"]){

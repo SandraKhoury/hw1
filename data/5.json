@@ -1,0 +1,18 @@
+{
+    "nodes":[
+        {"isAcceptState":true,"text":"q_0"},
+        {"isAcceptState":true,"text":"q_1"},
+        {"isAcceptState":false,"text":"q_2"},
+        {"isAcceptState":false,"text":"R"}
+    ],
+    "links":[
+        {"type":"StartLink","node":0,"text":""},
+        {"type":"SelfLink","node":1,"text":"0"},
+        {"type":"SelfLink","node":3,"text":"0,1"},
+        {"type":"Link","nodeA":0,"nodeB":1,"text":"0"},
+        {"type":"Link","nodeA":0,"nodeB":3,"text":"1"},
+        {"type":"Link","nodeA":1,"nodeB":2,"text":"1"},
+        {"type":"Link","nodeA":2,"nodeB":1,"text":"0"},
+        {"type":"Link","nodeA":2,"nodeB":3,"text":"1"}
+        ]
+}
