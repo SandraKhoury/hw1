@@ -21,10 +21,11 @@ jobs:
             env: 
                 GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}  
       status:
-            name: status
-            runs-on: ubuntu-latest
-            needs: [build]
-            steps:
-                  - name: status
-                    run: sh status.sh
+        name: status
+        runs-on: ubuntu-latest
+        needs: [build]
+        steps:
+              - uses: actions/checkout@v2
+              - name: status
+                run: sh status.sh
               
