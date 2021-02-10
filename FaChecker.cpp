@@ -11,28 +11,31 @@ std::string report(const json& tree) {
 	std::ostringstream STREAM;
 	json problems = tree["problems"];
 	int total = 0, max = 0;
+	STREAM << "# TOTAL " << tree["total"] << "/" << tree["max_points"];
+	STREAM << "\n---------------------------------\n";
+	STREAM << "DETAILS\n\n";
+
 	for (auto& p : problems) {
 		json& tests = p["tests"];
-		STREAM << "## " << p["name"] << "\n";
+		STREAM << "### " << p["name"] << "\n";
 		STREAM << "---------------\n";
 		for (auto& t : tests) {
-			STREAM << "### "<<t["name"];
+			STREAM <<t["name"];
 			if (t["points"] == 0) {
-				STREAM << " FAILED" << "\tPoints=0\n";
-				STREAM << "\tFOR INPUT = " << t["input"];
-				STREAM <<"\tEXPECTED " << t["expected-output"];
-				STREAM << "\tRESULT " << t["output"] << "\n";
+				STREAM << " __FAILED__..........." << "\t__Points__=0\n";
+				STREAM << "\tfor input = " << t["input"];
+				STREAM <<"\texpected:" << t["expected-output"];
+				STREAM << "\tresult:" << t["output"] << "\n\n";
 			}
 			else {
 				total +=static_cast<int>( t["points"]);
-				STREAM << " PASSED" << "\tPoints=" << t["points"] << "\n";
+				STREAM << " __PASSED__..........." << "\t__Points__=" << t["points"] << "\n";
 			}
 		}
-		STREAM << "SUBTOTAL=   " << p["total"] << "/" << p["max_points"] << "\n\n";
+		STREAM << "__SUBTOTAL__=   " << p["total"] << "/" << p["max_points"] << "\n\n";
 
 	}
-	STREAM << "---------------------------------\n";
-	STREAM << "# TOTAL \n" << tree["total"] << "/" << tree["max_points"];
+	
 	return STREAM.str();
 }
 
