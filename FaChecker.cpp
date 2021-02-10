@@ -13,12 +13,12 @@ std::string report(const json& tree) {
 	int total = 0, max = 0;
 	for (auto& p : problems) {
 		json& tests = p["tests"];
-		STREAM << "Problem " << p["name"] << "\n";
+		STREAM << "# " << p["name"] << "\n";
 		STREAM << "---------------\n";
 		for (auto& t : tests) {
-			STREAM << t["name"];
+			STREAM << "## "<<t["name"];
 			if (t["points"] == 0) {
-				STREAM << "FAILED" << "\tPoints=0\n";
+				STREAM << " FAILED" << "\tPoints=0\n";
 				STREAM << "\tFOR INPUT = " << t["input"];
 				STREAM <<"\tEXPECTED " << t["expected-output"];
 				STREAM << "\tRESULT " << t["output"] << "\n";
@@ -31,6 +31,8 @@ std::string report(const json& tree) {
 		STREAM << "SUBTOTAL=   " << p["total"] << "/" << p["max_points"] << "\n\n";
 
 	}
+	STREAM << "---------------------------------\n";
+	STREAM << "# TOTAL \n" << tree["total"] << "/" << tree["max_points"];
 	return STREAM.str();
 }
 
@@ -171,6 +173,11 @@ int main(int argc,char **argv) {
 		    std::cerr<<"some tests failed\n";
 		//    exit(1);
 		}
+		std::ofstream report_file;
+		report_file.open("report.md");
+		std::string rpt = report(tree);
+		report_file << rpt;
+		report_file.close();
 	/* TODO: figure out a way instead of processing
 	*  the tree twice
 	*/
