@@ -13,10 +13,10 @@ std::string report(const json& tree) {
 	int total = 0, max = 0;
 	for (auto& p : problems) {
 		json& tests = p["tests"];
-		STREAM << "# " << p["name"] << "\n";
+		STREAM << "## " << p["name"] << "\n";
 		STREAM << "---------------\n";
 		for (auto& t : tests) {
-			STREAM << "## "<<t["name"];
+			STREAM << "### "<<t["name"];
 			if (t["points"] == 0) {
 				STREAM << " FAILED" << "\tPoints=0\n";
 				STREAM << "\tFOR INPUT = " << t["input"];

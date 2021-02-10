@@ -1,15 +1,24 @@
 {
   "tests": [
     {
-      "name": "test",
+      "name": "testAll",
       "setup": "",
       "run": "sh testAll.sh",
       "input": "",
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "partial": true,
       "points": 100
+    },
+    {
+      "name": "status",
+      "setup": "",
+      "run": "sh status.sh",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0
     }
   ]
 }
