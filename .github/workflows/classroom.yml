@@ -20,3 +20,11 @@ jobs:
                add: "*"
             env: 
                 GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}  
+      status:
+            name: status
+            runs-on: ubuntu-latest
+            needs: [build]
+            steps:
+                  - name: status
+                    run: sh status.sh
+              
