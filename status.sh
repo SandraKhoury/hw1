@@ -1,8 +1,10 @@
-#!/bin/bash
+max=$(head -1 report.md|cut -d ' ' -f 3|cut -d '/' -f 2)
+total=$(head -1 report.md|cut -d ' ' -f 3|cut -d '/' -f 1)
+echo $total
+echo $max
 
-total=$(tail -1 report.md | cut -d '/' -f 1)
-max=$(tail -1 report.md | cut -d '/' -f 2)
 if [ "$total" -lt "$max" ]
 then
-	 exit 1
+	exit 1
 fi
+
