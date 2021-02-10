@@ -174,7 +174,7 @@ int main(int argc,char **argv) {
 		//    exit(1);
 		}
 		std::ofstream report_file;
-		report_file.open("report.md");
+		report_file.open("../report.md");
 		std::string rpt = report(tree);
 		report_file << rpt;
 		report_file.close();
