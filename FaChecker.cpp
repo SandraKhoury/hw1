@@ -158,6 +158,7 @@ int main(int argc,char **argv) {
 	catch (...) {
 		std::cerr << fail("ERROR\n");
 		std::cerr << fail("File(s) not found or corrupted\n");
+		exit(1);
 		//std::cerr << e.what() << "\n";
 	}
 	return 0;
