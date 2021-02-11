@@ -351,14 +351,20 @@
         "tests":[
                     {
                         "name":"test1",
-                        "input":"01101",
+                        "input":"0",
+                        "expected-output":true,
+                        "points":2
+                    },
+                    {
+                        "name":"test2",
+                        "input":"010010010",
                         "expected-output":false,
                         "points":2
                     },
                     {
                         "name":"test3",
-                        "input":"100101",
-                        "expected-output":true,
+                        "input":"01101",
+                        "expected-output":false,
                         "points":2
                     },
                     {
