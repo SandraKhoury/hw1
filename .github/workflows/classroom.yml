@@ -15,17 +15,24 @@ jobs:
           - name: build
             run: sh build.sh
           - uses : hikmatfarhat-ndu/my_autograding@main
-          - uses: EndBug/add-and-commit@v5
+          - uses: actions/upload-artifact@v2
             with:
-               add: "*"
-            env: 
-                GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}  
+                  name: my-artifact
+                  path: report.md
+         # - uses: EndBug/add-and-commit@v5
+         #   with:
+         #      add: "*"
+         #   env: 
+         #       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}  
       status:
         name: status
         runs-on: ubuntu-latest
         needs: [build]
         steps:
               - uses: actions/checkout@v2
+              - uses: actions/download-artifact@v2
+                with:
+                      name: my-artifact
               - name: status
                 run: sh status.sh
               
