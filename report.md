@@ -176,10 +176,13 @@ __SUBTOTAL__=   0/10
 ### "problem10"
 ---------------
 "test1" __FAILED__...........	__Points__=0
-	for input = "01101"	expected:false	result:null
+	for input = "0"	expected:true	result:null
+
+"test2" __FAILED__...........	__Points__=0
+	for input = "010010010"	expected:false	result:null
 
 "test3" __FAILED__...........	__Points__=0
-	for input = "100101"	expected:true	result:null
+	for input = "01101"	expected:false	result:null
 
 "test4" __FAILED__...........	__Points__=0
 	for input = "01101"	expected:false	result:null
