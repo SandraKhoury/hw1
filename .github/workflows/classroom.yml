@@ -35,4 +35,6 @@ jobs:
                       name: report
               - name: status
                 run: sh status.sh
+                env:
+                      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
               
