@@ -28,7 +28,8 @@ jobs:
         name: status
         runs-on: ubuntu-latest
         needs: [build]
-        if: "!contains(github.event.head_commit.message, 'GitHub')"
+        #if: "!contains(github.event.head_commit.message, 'GitHub')"
+        if: "!contains(github.event.actor.login,'classroom')"
         steps:
               - uses: actions/checkout@v2
               - uses: actions/download-artifact@v2
