@@ -32,6 +32,8 @@ jobs:
         if: "!contains(github.event.actor.login,'classroom')"
         steps:
               - uses: actions/checkout@v2
+              - name: environ
+                run: env
               - uses: actions/download-artifact@v2
                 with:
                       name: report
