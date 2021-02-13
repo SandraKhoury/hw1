@@ -8,6 +8,7 @@ jobs:
       build:
         name: Autograding
         runs-on: ubuntu-latest
+        if: ${{github.run_number >4}}
         strategy:
               max-parallel: 1
         steps:
