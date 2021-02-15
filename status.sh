@@ -5,16 +5,8 @@ echo $max
 echo "ACTOR = $GITHUB_ACTOR "
 
 echo "RUN NUMBER= $GITHUB_RUN_NUMBER"
-if [ "$GITHUB_RUN_NUMBER" -gt 4 ]
-then
-gh pr comment 1 -b "Total: $total / $max "
-fi
 
-if [ "$GITHUB_ACTOR" = "github-classroom" ]
-then
 gh pr comment 1 -b "Total: $total / $max "
-fi
-
 
 if [ "$total" -lt "$max" ]
 then
