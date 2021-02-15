@@ -1,6 +1,6 @@
 name: GitHub Classroom Workflow
 
-on: [push]
+on: [issue_comment]
 env: 
       BUILD_TYPE: Release 
 
@@ -8,11 +8,15 @@ jobs:
       build:
         name: Autograding
         runs-on: ubuntu-latest
-        if: ${{github.run_number >4}}
+        if: ${{(github.event.issue.pull_request) && contains(github.event.comment.body,'/eval') && (github.run_number >4)}}
         strategy:
               max-parallel: 1
         steps:
           - uses: actions/checkout@v2
+          - name: greeting
+            run: gh pr comment ${{github.event.issue_number}} -b "Please wait a few minutes. The grade will be displayed below"
+            env:
+                 GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           - name: build
             run: sh build.sh
           - name: autograding
