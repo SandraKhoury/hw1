@@ -1,4 +1,4 @@
-# Homework 2
+# Homework 1
 
 Use this repository to submit your solution to homework 1. The questions are on Teams in a pdf file.
 
