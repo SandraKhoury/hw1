@@ -1,6 +1,6 @@
 name: GitHub Classroom Workflow
 
-on: [issue_comment]
+on: [workflow_dispatch,issue_comment]
 env: 
       BUILD_TYPE: Release 
 
