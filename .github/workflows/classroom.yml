@@ -8,7 +8,7 @@ jobs:
       build:
         name: Autograding
         runs-on: ubuntu-latest
-        if: ${{(github.event.issue.pull_request) && contains(github.event.comment.body,'/eval')}}
+     #   if: ${{(github.event.issue.pull_request) && contains(github.event.comment.body,'/eval')}}
         strategy:
               max-parallel: 1
         steps:
