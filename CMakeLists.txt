@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.0)
 #set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake")
-set(CMAKE_TOOLCHAIN_FILE "c:/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake")
+#set(CMAKE_TOOLCHAIN_FILE "c:/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake")
 project (FA-Checker LANGUAGES CXX)
 set(CMAKE_SUPPRESS_REGENERATION true)
 set(CMAKE_CXX_STANDARD 17)
