@@ -18,9 +18,9 @@ jobs:
          #   env:
          #        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           - name: install boost
-            run: sudo apt-get install -y libboost-dev
+            run: sudo apt-get install -y libboost-all-dev
           - name: check boost
-            run: sudo dpkg -L libboost-dev
+            run: sudo dpkg -L libboost-all-dev
           - name: build
             run: sh build.sh
           - name: autograding
