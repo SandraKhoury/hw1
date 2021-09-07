@@ -20,7 +20,7 @@ jobs:
           - name: install boost
             run: sudo apt-get install -y libboost-dev
           - name: check boost
-            run: sudo dpkg -L libbost-dev
+            run: sudo dpkg -L libboost-dev
           - name: build
             run: sh build.sh
           - name: autograding
