@@ -13,10 +13,10 @@ jobs:
               max-parallel: 1
         steps:
           - uses: actions/checkout@v2
-          - name: greeting
-            run: gh pr comment ${{github.event.issue_number}} -b "Please wait a few minutes. The grade will be displayed below"
-            env:
-                 GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+         # - name: greeting
+         #   run: gh pr comment ${{github.event.issue_number}} -b "Please wait a few minutes. The grade will be displayed below"
+         #   env:
+         #        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           - name: build
             run: sh build.sh
           - name: autograding
