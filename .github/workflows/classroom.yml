@@ -18,7 +18,7 @@ jobs:
          #   env:
          #        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           - name: install boost
-            run: sudo apt-get install -y boost
+            run: sudo apt-get install -y libboost-dev
           - name: build
             run: sh build.sh
           - name: autograding
