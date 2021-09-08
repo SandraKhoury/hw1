@@ -22,7 +22,7 @@ jobs:
             id: cache-boost
             with:
              path: "~/boost"
-             key: ${{secrets.BOOST_VERSION}}
+             key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
           - name: install boost
             env:
                   CACHE_HIT: ${{steps.cache-boost.outputs.cache-hit}}
