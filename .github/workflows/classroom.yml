@@ -22,11 +22,11 @@ jobs:
             id: cache-boost
             with:
              path: "~/boost"
-             #key: ${{secrets.BOOST_VERSION}}
+             key: ${{secrets.BOOST_VERSION}}
           - name: install boost
             env:
                   CACHE_HIT: ${{steps.cache-boost.outputs.cache-hit}}
-                  #BOOST_VERSION: ${{secrets.BOOST_VERSION}}
+                  BOOST_VERSION: ${{secrets.BOOST_VERSION}}
             run: |
                    if [[ "$CACHE_HIT" == 'true' ]]; then
                         sudo cp --verbose --force --recursive ~/boost/* /
