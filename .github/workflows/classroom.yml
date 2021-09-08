@@ -45,11 +45,11 @@ jobs:
             run: sh status.sh
             env:
                GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          - uses: actions/upload-artifact@v2
-            if: ${{always()}}
-            with:
-                  name: report
-                  path: report.md
+          #- uses: actions/upload-artifact@v2
+          #  if: ${{always()}}
+          #  with:
+          #        name: report
+          #        path: report.md
          # - uses: EndBug/add-and-commit@v5
          #   with:
          #      add: "*"
