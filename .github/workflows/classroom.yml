@@ -37,8 +37,8 @@ jobs:
                    fi
           #- name: check boost
           #  run: ls -l /usr/include
-          #- name: build
-          #  run: sh build.sh
+          - name: build
+            run: sh build.sh
           #- name: autograding
           #  uses : hikmatfarhat-ndu/my_autograding@main
           #- name: status
