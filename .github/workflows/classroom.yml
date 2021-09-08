@@ -17,8 +17,24 @@ jobs:
          #   run: gh pr comment ${{github.event.issue_number}} -b "Please wait a few minutes. The grade will be displayed below"
          #   env:
          #        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          - name: Cache boost
+            uses: actions/cache@v2
+            id: cache-boost
+            with:
+             path: "~/boost"
+             #key: ${{secrets.BOOST_VERSION}}
           - name: install boost
-            run: sudo apt-get install -y libboost-all-dev
+            env:
+                  CACHE_HIT: ${{steps.cache-boost.outputs.cache-hit}}
+                  #BOOST_VERSION: ${{secrets.BOOST_VERSION}}
+            run: |
+                   if [[ "$CACHE_HIT" == 'true' ]]; then
+                        sudo cp --verbose --force --recursive ~/boost/* /
+                   else
+                     mkdir -p ~/boost
+                     sudo apt-get install -y libboost-all-dev
+                     sudo dpkg -L boost-all-dev | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/boost/
+                   fi
           - name: check boost
             run: ls -l /usr/include
           - name: build
