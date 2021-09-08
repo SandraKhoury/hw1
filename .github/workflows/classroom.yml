@@ -32,8 +32,8 @@ jobs:
                         sudo cp --verbose --force --recursive ~/boost/* /
                    else
                      mkdir -p ~/boost
-                     sudo apt-get install -y libboost-all-dev
-                     sudo dpkg -L boost-all-dev | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/boost/
+                     sudo apt-get install -y libboost-1.71-dev
+                     sudo dpkg -L boost-1.71-dev | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/boost/
                    fi
           - name: check boost
             run: ls -l /usr/include
