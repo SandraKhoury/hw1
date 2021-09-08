@@ -35,16 +35,16 @@ jobs:
                      sudo apt-get install -y libboost1.71-dev
                      sudo dpkg -L libboost1.71-dev | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/boost/
                    fi
-          - name: check boost
-            run: ls -l /usr/include
-          - name: build
-            run: sh build.sh
-          - name: autograding
-            uses : hikmatfarhat-ndu/my_autograding@main
-          - name: status
-            run: sh status.sh
-            env:
-               GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          #- name: check boost
+          #  run: ls -l /usr/include
+          #- name: build
+          #  run: sh build.sh
+          #- name: autograding
+          #  uses : hikmatfarhat-ndu/my_autograding@main
+          #- name: status
+          #  run: sh status.sh
+          #  env:
+          #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           #- uses: actions/upload-artifact@v2
           #  if: ${{always()}}
           #  with:
