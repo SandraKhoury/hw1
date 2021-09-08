@@ -22,7 +22,7 @@ jobs:
             id: cache-boost
             with:
              path: "~/boost"
-             key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+             key: libboost1.71-dev
           - name: install boost
             env:
                   CACHE_HIT: ${{steps.cache-boost.outputs.cache-hit}}
@@ -33,7 +33,7 @@ jobs:
                    else
                      mkdir -p ~/boost
                      sudo apt-get install -y libboost1.71-dev
-                     sudo dpkg -L boost1.71-dev | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/boost/
+                     sudo dpkg -L libboost1.71-dev | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/boost/
                    fi
           - name: check boost
             run: ls -l /usr/include
