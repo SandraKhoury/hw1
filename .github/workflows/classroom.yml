@@ -39,12 +39,12 @@ jobs:
           #  run: ls -l /usr/include
           - name: build
             run: sh build.sh
-          #- name: autograding
-          #  uses : hikmatfarhat-ndu/my_autograding@main
-          #- name: status
-          #  run: sh status.sh
-          #  env:
-          #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          - name: autograding
+            uses : education/autograding@v1
+          - name: status
+            run: sh status.sh
+            env:
+               GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           #- uses: actions/upload-artifact@v2
           #  if: ${{always()}}
           #  with:
