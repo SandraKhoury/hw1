@@ -6,7 +6,7 @@ echo "ACTOR = $GITHUB_ACTOR "
 
 echo "RUN NUMBER= $GITHUB_RUN_NUMBER"
 
-gh pr comment 1 -b "Total: $total / $max "
+#gh pr comment 1 -b "Total: $total / $max "
 
 if [ "$total" -lt "$max" ]
 then

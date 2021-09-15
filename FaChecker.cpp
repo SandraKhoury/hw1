@@ -1,3 +1,14 @@
+/**
+ * @file FaChecker.cpp
+ * @author Hikmat Farhat (hfarhat@ndu.edu.lb)
+ * @brief Checks the correctness of a Finite State Machine
+ * in json format against a set of tests
+ * @version 0.1
+ * @date 2021-02-15
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -5,8 +16,15 @@
 #include "json.hpp"
 #include "FA.h"
 #include "utils.h"
+//#include "unistd.h"
 using nlohmann::json;
 bool debug=false;
+/**
+ * @brief Return the final json object
+ * as string 
+ * @param tree 
+ * @return std::string 
+ */
 std::string report(const json& tree) {
 	std::ostringstream STREAM;
 	json problems = tree["problems"];
@@ -103,7 +121,12 @@ void runTests(json& p,std::string parent_path) {
 
 }
 
-
+/**
+ * @brief Run all the problems given
+ * in the json file 
+ * @param filename 
+ * @return json 
+ */
 json  runProblems(std::string filename) {
 	auto dir = [=]() {
 		auto pos=filename.find_last_of("\\/");
@@ -130,18 +153,6 @@ json  runProblems(std::string filename) {
 	int max_possible=0;
 	int total = 0;
 
-/* first scan and compute max possible points
- * before they change
- */
-	// int p_max_point = 0;
-	// for(auto& p:problems){
-	// 	for(auto t:p["tests"]){
-	// 		max_possible+=static_cast<int>(t["points"]);
-	// 		p_max_point += static_cast<int>(t["points"]);
-	// 	}
-	// 	p["max_points"] = p_max_point;
-	// 	p_max_point = 0;
-	// }
 	for (auto& p : problems) {
 		/* make sure the entry p["total"]
 		* exists in case test fails
@@ -156,16 +167,14 @@ json  runProblems(std::string filename) {
 	
 }
 int main(int argc,char **argv) {
-	if (argc < 2) {
-		std::cerr << "usage: FaChecker filename.json\n";
+/*	char *buf=(char *)malloc(1024);
+	std::cout<<"working dir="<<getwd(buf)<<std::endl;*/
+	if (argc < 3) {
+		std::cerr << "usage: FaChecker filename.json report.md\n";
 		exit(1);
 	}
 	auto config_filename = argv[1];
-	if(argc>2){
-
-		debug=true;
-		config_filename = "../data/problems.json";
-	}
+	auto report_filename=argv[2];
 	std::cerr<<"START \n";
 	try {
 		json tree = runProblems(config_filename);
@@ -177,7 +186,7 @@ int main(int argc,char **argv) {
 		//    exit(1);
 		}
 		std::ofstream report_file;
-		report_file.open("../report.md");
+		report_file.open(report_filename);
 		std::string rpt = report(tree);
 		report_file << rpt;
 		report_file.close();

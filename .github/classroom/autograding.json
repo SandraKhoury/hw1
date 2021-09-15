@@ -3,7 +3,7 @@
     {
       "name": "testAll",
       "setup": "",
-      "run": "sh testAll.sh",
+      "run": "build/Fa-Checker data/problems.json report.md ",
       "input": "",
       "output": "",
       "comparison": "included",
