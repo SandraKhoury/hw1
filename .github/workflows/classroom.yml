@@ -35,16 +35,16 @@ jobs:
                      sudo apt-get install -y libboost1.71-dev
                      sudo dpkg -L libboost1.71-dev | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/boost/
                    fi
-          #- name: check boost
-          #  run: ls -l /usr/include
           - name: build
             run: sh build.sh
           - name: anno1
             run: |
-                  text="88/100"
+                  text=$(sh status.sh)
                   echo "::notice ::$text"
-          - name: autograding
-            uses : education/autograding@v1
+            env:
+                 GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          #- name: autograding
+          #  uses : education/autograding@v1
           #- name: status
           #  run: sh status.sh
           #  env:
@@ -54,32 +54,5 @@ jobs:
             with:
                   name: report
                   path: report.md
-          - name: anno2
-            run: |
-                  text="This is an Error"
-                  echo "::error $text"
-         # - uses: EndBug/add-and-commit@v5
-         #   with:
-         #      add: "*"
-         #   env: 
-         #       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}  
-     # status:
-     #   name: status
-     #   runs-on: ubuntu-latest
-     #   needs: [build]
-        #if: "!contains(github.event.head_commit.message, 'GitHub')"
-        # for some reason the below does not work
-        #if: "!contains(github.event.actor,'github-classroom')"
-     #   if : github.event.run_number > 4
-     #   steps:
-     #         - uses: actions/checkout@v2
-              #- name: environ
-              #  run: env
-      #        - uses: actions/download-artifact@v2
-       #         with:
-        #              name: report
-         #     - name: status
-          #      run: sh status.sh
-         #       env:
-         #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-              
+          
+         
