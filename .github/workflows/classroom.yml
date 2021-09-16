@@ -8,15 +8,12 @@ jobs:
       build:
         name: Autograding
         runs-on: ubuntu-latest
-     #   if: ${{(github.event.issue.pull_request) && contains(github.event.comment.body,'/eval')}}
+        if: ${{(github.event.issue.pull_request) && contains(github.event.comment.body,'/eval')}}
         strategy:
               max-parallel: 1
         steps:
           - uses: actions/checkout@v2
-         # - name: greeting
-         #   run: gh pr comment ${{github.event.issue_number}} -b "Please wait a few minutes. The grade will be displayed below"
-         #   env:
-         #        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+         
           - name: Cache boost
             uses: actions/cache@v2
             id: cache-boost
@@ -37,9 +34,7 @@ jobs:
                    fi
           - name: build
             run: sh build.sh
-          - name: anno2
-            run: |
-                  echo "::notice ::test"
+          
           - name: testAll
             run: |
                   sh testAll.sh
@@ -49,7 +44,12 @@ jobs:
                   echo "::notice ::$text"
             env:
                  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-   
+          - name: greeting
+            run: |
+                  text=$(sh status.sh)
+                  gh pr comment ${{github.event.issue_number}} -b "$text "
+            env:
+                 GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           - uses: actions/upload-artifact@v2
             if: ${{always()}}
             with:
