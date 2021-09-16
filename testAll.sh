@@ -1,5 +1,2 @@
 #!/bin/bash
-cd build
-pwd
-ls
-./FaChecker ../data/problems.json
+build/Fa-Checker data/problems.json report.md 
