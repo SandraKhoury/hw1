@@ -40,9 +40,11 @@ jobs:
           - name: anno2
             run: |
                   echo "::notice ::test"
-          - name: anno1
+          - name: testAll
             run: |
                   sh testAll.sh
+          - name: anno1
+            run: |
                   text=$(sh status.sh)
                   echo "::notice ::$text"
             env:
