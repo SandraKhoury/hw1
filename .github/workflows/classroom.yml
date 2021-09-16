@@ -41,7 +41,8 @@ jobs:
             run: sh build.sh
           - name: anno1
             run: |
-                  echo "::notice file=app.js,line=1,col=5::Spelling mistake in string"
+                  text="88/100"
+                  echo "::notice ::$text"
           - name: autograding
             uses : education/autograding@v1
           #- name: status
