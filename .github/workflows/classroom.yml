@@ -64,7 +64,6 @@ jobs:
             with:
                 file_pattern: '*.md' 
                 repository: "${{github.workspace}}"
-                commit_message: "${{env.COMMIT_MESSAGE}}"
-
+                commit_message: "Generate Report"
           
          
