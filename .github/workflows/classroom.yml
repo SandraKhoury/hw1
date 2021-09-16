@@ -41,7 +41,7 @@ jobs:
           - name: Annotation
             run: |
                   text=$(sh status.sh)
-                  echo "::notice ::$text"
+                  echo "::notice title=Autograding complete ::$text"
             env:
                  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           - name: Report total in PR
