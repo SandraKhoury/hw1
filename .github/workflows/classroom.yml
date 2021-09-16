@@ -37,6 +37,9 @@ jobs:
                    fi
           - name: build
             run: sh build.sh
+          - name: anno2
+            run: |
+                  echo "::notice ::test"
           - name: anno1
             run: |
                   sh testAll.sh
