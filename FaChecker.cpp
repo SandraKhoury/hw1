@@ -47,7 +47,7 @@ std::string report(const json& tree) {
 			}
 			else {
 				total +=static_cast<int>( t["points"]);
-				STREAM << " __PASSED__..........." << "\t__Points__=" << t["points"] << "\n";
+				STREAM << " __PASSED__..........." << "\t__Points__=" << t["points"] << "\n\n";
 			}
 		}
 		STREAM << "__SUBTOTAL__=   " << p["total"] << "/" << p["max_points"] << "\n\n";
