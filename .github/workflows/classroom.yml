@@ -49,16 +49,22 @@ jobs:
                   echo "::notice ::$text"
             env:
                  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          #- name: autograding
-          #  uses : education/autograding@v1
-          #- name: status
-          #  run: sh status.sh
-          #  env:
-          #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+   
           - uses: actions/upload-artifact@v2
             if: ${{always()}}
             with:
                   name: report
                   path: report.md
+                  
+          - name: commit-remote
+            if: ${{ always() }}
+            env:
+                  token: ${{secrets.workflow_token}}
+            uses: stefanzweifel/git-auto-commit-action@v4
+            with:
+                file_pattern: '*.md' 
+                repository: "${{github.workspace}}/tmp"
+                commit_message: "${{env.COMMIT_MESSAGE}}"
+
           
          
