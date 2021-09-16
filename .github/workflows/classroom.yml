@@ -38,18 +38,18 @@ jobs:
           - name: testAll
             run: |
                   sh testAll.sh
-          - name: anno1
+          - name: Annotation
             run: |
                   text=$(sh status.sh)
                   echo "::notice ::$text"
             env:
                  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          - name: greeting
-            run: |
-                  text=$(sh status.sh)
-                  gh pr comment ${{github.event.issue_number}} -b "$text "
-            env:
-                 GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          #- name: Report total in PR
+           # run: |
+           #       text=$(sh status.sh)
+           #       gh pr comment ${{github.event.issue_number}} -b "$text "
+           # env:
+           #      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           - uses: actions/upload-artifact@v2
             if: ${{always()}}
             with:
